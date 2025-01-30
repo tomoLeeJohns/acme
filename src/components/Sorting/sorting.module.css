@@ -1,0 +1,74 @@
+.sorting {
+  grid-column: 2/4;
+  grid-row: 1/2;
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  margin-right: 40px;
+  font-family: var(--font-open-sans);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.label + div {
+  flex: 1;
+}
+
+.sorting :global(.custom-select__control) {
+  background-color: #fff;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.sorting :global(.custom-select__value-container) {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.sorting :global(.custom-select__menu) {
+  background-color: white !important;
+  border: none;
+  margin: -7px 0 0;
+  border-radius: 0;
+}
+
+.sorting :global(.custom-select__menu-list) {
+  padding: 0;
+}
+
+.sorting :global(.custom-select__option) {
+  color: #1e2c3b;
+  font-family: var(--font-open-sans);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sorting :global(.custom-select__single-value) {
+  font-family: var(--font-open-sans);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sorting :global(.custom-select__option--is-focused) {
+  background-color: #ddd;
+}
+
+.sorting :global(.custom-select__option--is-selected) {
+  background-color: #ddd;
+}
+
+.sorting :global(.custom-select__indicator-separator),
+.sorting :global(.custom-select__indicator) {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .sorting {
+    grid-column: 3/4;
+  }
+}

@@ -1,0 +1,51 @@
+.tabs {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.tabs > button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #1f1a17;
+  width: 80px;
+  text-align: left;
+}
+
+.tabs > button.active {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  color: #8e2f3f;
+  font-weight: 700;
+}
+
+.tabs > button:nth-of-type(2) {
+  margin-left: 40px;
+  padding-left: 15px;
+  position: relative;
+}
+.tabs > button:nth-of-type(2)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 13px;
+  width: 2px;
+  background-color: #a02e41;
+  transform: rotate(30deg);
+}
+
+@media screen and (min-width: 1024px) {
+  .tabs {
+    margin: 0;
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+}

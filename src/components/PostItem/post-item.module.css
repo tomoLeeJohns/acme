@@ -1,0 +1,88 @@
+.wrapper {
+  background-color: #f4f4f4;
+  height: 580px;
+  padding: 45px 34px;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 53px;
+  border-bottom-right-radius: 53px;
+  color: #1e2c3b;
+}
+
+.category {
+  margin-top: 10px;
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 600;
+  font-family: var(--font-open-sans);
+  line-height: 26px;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  letter-spacing: 0;
+}
+
+.category:global(.cat-wiedza) {
+  color: var(--color-wiedza);
+}
+
+.category:global(.cat-inspiracje) {
+  color: var(--color-inspiracje);
+}
+
+.category:global(.cat-interpretacje) {
+  color: var(--color-interpretacje);
+}
+
+.category:global(.cat-dostepne) {
+  color: var(--color-dostepne);
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: clamp(60px, 90px, 100px);
+  margin-top: 10px;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 900;
+  font-family: var(--font-playfair);
+  text-transform: capitalize;
+}
+
+.body {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: clamp(80px, 130px, 150px);
+  font-family: var(--font-open-sans);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.created-at {
+  font-weight: 700;
+  font-family: var(--font-playfair);
+  font-size: 19px;
+  line-height: 1;
+  margin: 38px 0;
+}
+
+.link {
+  font-weight: 700;
+  font-family: var(--font-open-sans);
+  font-size: 16px;
+  margin-top: auto;
+  padding-right: 30px;
+  background: transparent url("/arrow-right.png") no-repeat right center;
+  align-self: flex-start;
+}
+
+.favorite-button {
+}

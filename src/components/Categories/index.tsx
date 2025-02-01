@@ -3,15 +3,20 @@ import CategoryItem from "../CategoryItem";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperClass } from "swiper";
 import { SWIPER_CONFIG, CATEGORIES } from "@/const";
+import { useCategory } from "@/context/CategoryContext";
 import styles from "./categories.module.css";
+
 import "swiper/swiper-bundle.css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export default function Categories() {
+  const { category } = useCategory();
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
   const swiperRef = useRef<SwiperClass | null>(null);
+  const activeIndex = CATEGORIES.findIndex((item) => item === category);
+
   useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.el.style.opacity = "1";
@@ -34,6 +39,18 @@ export default function Categories() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      const swiper = swiperRef.current;
+      const isVisible =
+        activeIndex >= swiper.activeIndex &&
+        activeIndex <
+          Number(swiper.activeIndex) + Number(swiper.params.slidesPerView!);
+
+      if (!isVisible) swiper.slideTo(activeIndex, 0);
+    }
+  }, [activeIndex]);
 
   return (
     <div className={styles.wrapper}>

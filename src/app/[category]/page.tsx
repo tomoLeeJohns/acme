@@ -14,12 +14,13 @@ export default function Home() {
   const { category = "all" } = useParams<{
     category: string | undefined;
   }>();
-  if (category && ![...CATEGORIES, "all"].includes(category)) return notFound();
 
   useEffect(() => {
     setActiveTab("all");
     setCategory(category);
   }, [category]);
+
+  if (![...CATEGORIES, "all"].includes(category)) return notFound();
 
   return (
     <main className={styles.main}>

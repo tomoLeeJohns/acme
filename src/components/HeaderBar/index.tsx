@@ -21,7 +21,7 @@ export const HeaderBar = ({
         >
           <span>Blog Edukacyjny</span>
         </Link>
-        <Favourite id={postId} />
+        <Favourite id={postId} label={false} />
       </div>
     </div>
   );

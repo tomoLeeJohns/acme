@@ -21,9 +21,9 @@ export const Favourite = ({
         <path
           d="M18.5 2L23.5985 12.2029L35 13.8491L26.75 21.7865L28.697 33L18.5 27.7029L8.303 33L10.25 21.7865L2 13.8491L13.4015 12.2029L18.5 2Z"
           stroke="#1E1E1E"
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
       {label && <span>Dodaj do ulubionych</span>}

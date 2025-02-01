@@ -10,7 +10,7 @@ export default function PostPage() {
     id: string;
     category: string;
   }>();
-  const { id, category } = params;
+  const { id } = params;
   const [post, setPost] = useState<Post | null>(null);
   const [error, setError] = useState(null);
 

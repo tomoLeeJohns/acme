@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useFavorites } from "@/context/FavoritesContext";
 import { Post } from "@/types";
 import { CATEGORY_MAP } from "@/const";
 import styles from "./post-item.module.css";
@@ -8,10 +7,8 @@ import { useCategory } from "@/context/CategoryContext";
 import { Favourite } from "../Favourite";
 
 export default function PostItem({ post }: { post: Post }) {
-  const { favorites, toggleFavorite } = useFavorites();
   const { activeTab } = useTabs();
   const { category } = useCategory();
-  const isFavorite = favorites.some((id) => id === post.id);
   const categoryName = CATEGORY_MAP[post.category as keyof typeof CATEGORY_MAP];
   const formattedDate = new Date(post.createdAt).toISOString().split("T")[0];
 

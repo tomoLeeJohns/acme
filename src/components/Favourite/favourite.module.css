@@ -1,0 +1,22 @@
+.favourite {
+  display: flex;
+  align-items: center;
+  appearance: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.star {
+  width: 30px;
+  height: 30px;
+}
+
+.favourite span {
+  font-family: var(--font-open-sans);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+  color: #363b5c;
+  margin-left: 15px;
+}

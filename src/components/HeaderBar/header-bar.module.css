@@ -1,0 +1,29 @@
+.wrapper {
+  width: 100%;
+  max-width: 1630px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.header-bar {
+  display: flex;
+  max-width: 1208px;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+.return-link {
+  font-family: var(--font-open-sans);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 43px;
+  background: transparent url("/arrow-left.png") no-repeat left center;
+  padding-left: 40px;
+}
+
+.return-link > span:first-of-type {
+  color: #363b5c;
+}

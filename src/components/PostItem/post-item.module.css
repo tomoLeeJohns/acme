@@ -50,7 +50,10 @@
   line-height: 30px;
   font-weight: 900;
   font-family: var(--font-playfair);
-  text-transform: capitalize;
+}
+.title::first-letter,
+.body::first-letter {
+  text-transform: uppercase;
 }
 
 .body {
@@ -63,7 +66,6 @@
   font-size: 16px;
   line-height: 26px;
   font-weight: 400;
-  text-transform: capitalize;
 }
 
 .created-at {
@@ -78,11 +80,18 @@
   font-weight: 700;
   font-family: var(--font-open-sans);
   font-size: 16px;
-  margin-top: auto;
   padding-right: 30px;
   background: transparent url("/arrow-right.png") no-repeat right center;
-  align-self: flex-start;
+  display: flex;
+  align-items: center;
 }
 
-.favorite-button {
+.actions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.favourite {
 }

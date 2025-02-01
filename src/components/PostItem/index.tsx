@@ -5,6 +5,7 @@ import { CATEGORY_MAP } from "@/const";
 import styles from "./post-item.module.css";
 import { useTabs } from "@/context/TabsContext";
 import { useCategory } from "@/context/CategoryContext";
+import { Favourite } from "../Favourite";
 
 export default function PostItem({ post }: { post: Post }) {
   const { favorites, toggleFavorite } = useFavorites();
@@ -28,18 +29,16 @@ export default function PostItem({ post }: { post: Post }) {
 
       <p className={styles.body}>{post.body}</p>
 
-      {activeTab === "favorites" && (
-        <button
-          className={styles["favorite-button"]}
-          onClick={() => toggleFavorite(post.id)}
-        >
-          {isFavorite ? "⭐ Usuń z ulubionych" : "☆ Dodaj do ulubionych"}
-        </button>
-      )}
-
-      <Link className={styles.link} href={`/${category}/${post.id}`}>
-        zobacz więcej
-      </Link>
+      <div className={styles.actions}>
+        <Link className={styles.link} href={`/${category}/${post.id}`}>
+          zobacz więcej
+        </Link>
+        {activeTab === "favorites" && (
+          <div className={styles.favourite}>
+            <Favourite id={post.id} label={false} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

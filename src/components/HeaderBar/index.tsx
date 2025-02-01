@@ -14,14 +14,10 @@ export const HeaderBar = ({
   return (
     <div className={styles.wrapper}>
       <div className={styles["header-bar"]}>
-        <Link
-          className={styles["return-link"]}
-          href={`/${category}`}
-          style={{ textDecoration: "none", color: "blue" }}
-        >
+        <Link className={styles["return-link"]} href={`/${category}`}>
           <span>Blog Edukacyjny</span>
         </Link>
-        <Favourite id={postId} label={false} />
+        <Favourite id={postId} label={true} />
       </div>
     </div>
   );

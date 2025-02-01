@@ -24,6 +24,9 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <h1 className={styles.title}>
+        <span>Blog Edukacyjny</span>
+      </h1>
       <Categories />
       <PostList />
     </main>

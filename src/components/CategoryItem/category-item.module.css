@@ -1,5 +1,5 @@
 .category {
-  height: 457px;
+  height: 433px;
   border: none;
   border-top-left-radius: 60px;
   border-bottom-right-radius: 60px;
@@ -72,4 +72,10 @@
   line-height: 1;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+@media screen and (min-width: 1024px) {
+  .category {
+    height: 457px;
+  }
 }

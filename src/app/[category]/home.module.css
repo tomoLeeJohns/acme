@@ -10,10 +10,18 @@
 .title > span:only-of-type {
   max-width: 1630px;
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 5px 0;
   width: 100%;
   font-family: var(--font-open-sans);
-  font-size: 32px;
-  line-height: 43px;
+  font-size: 28px;
+  line-height: 38px;
   font-weight: 700;
+}
+
+@media screen and (min-width: 1024px) {
+  .title > span:only-of-type {
+    padding: 50px 0;
+    font-size: 32px;
+    line-height: 43px;
+  }
 }

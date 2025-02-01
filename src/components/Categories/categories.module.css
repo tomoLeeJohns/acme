@@ -11,8 +11,8 @@
 .categories {
   max-width: 1630px;
   margin: 0 auto;
-  height: 717px;
-  padding: 50px 0;
+  height: 635px;
+  padding: 25px 0;
   width: 100%;
 }
 
@@ -21,6 +21,7 @@
   font-size: 24px;
   line-height: 1;
   font-weight: 700;
+  display: none;
 }
 
 .slider-wrapper {
@@ -98,4 +99,15 @@
 
 .custom-arr-hidden {
   visibility: hidden;
+}
+
+@media screen and (min-width: 1024px) {
+  .title {
+    display: block;
+  }
+
+  .categories {
+    padding: 50px 0;
+    height: 717px;
+  }
 }

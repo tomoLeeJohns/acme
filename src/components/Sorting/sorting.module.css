@@ -11,6 +11,7 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 1;
+  display: none;
 }
 
 .label + div {
@@ -70,5 +71,8 @@
 @media screen and (min-width: 1024px) {
   .sorting {
     grid-column: 3/4;
+  }
+  .label {
+    display: block;
   }
 }

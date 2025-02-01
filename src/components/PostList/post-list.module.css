@@ -44,7 +44,7 @@
   align-self: center;
   display: grid;
   grid-template-columns: 50% 50%;
-  padding: 72px 0;
+  padding: 50px 0;
 }
 
 .filters > div:first-of-type {
@@ -88,8 +88,9 @@
   font-weight: 400;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .filters {
     grid-template-columns: 50% 25% 25%;
+    padding: 72px 0;
   }
 }

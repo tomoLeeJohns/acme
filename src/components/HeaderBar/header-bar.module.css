@@ -11,8 +11,8 @@
   display: flex;
   max-width: 1208px;
   justify-content: space-between;
-  align-items: center;
   height: 100px;
+  flex-direction: column;
 }
 
 .return-link {
@@ -22,8 +22,20 @@
   line-height: 43px;
   background: transparent url("/arrow-left.png") no-repeat left center;
   padding-left: 40px;
+  margin: 10px 0 30px;
 }
 
 .return-link > span:first-of-type {
   color: #363b5c;
+}
+
+@media screen and (min-width: 1024px) {
+  .return-link {
+    margin: 0;
+  }
+  .header-bar {
+    height: 150px;
+    flex-direction: row;
+    align-items: center;
+  }
 }

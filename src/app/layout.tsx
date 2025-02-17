@@ -3,8 +3,8 @@ import { TabsProvider } from "@/context/TabsContext";
 import { SortingProvider } from "@/context/SortingContext";
 import { CategoryProvider } from "@/context/CategoryContext";
 import { Poppins, Open_Sans, Playfair_Display } from "next/font/google";
-import "./globals.css";
 import Header from "@/components/Header";
+import "./globals.css";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -27,6 +27,13 @@ const playfair = Playfair_Display({
   display: "swap",
   variable: "--font-playfair",
 });
+
+export async function generateMetadata() {
+  return {
+    title: "ACME",
+    description: "ACME description",
+  };
+}
 
 export default function RootLayout({
   children,

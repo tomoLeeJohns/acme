@@ -1,47 +1,32 @@
+"use client";
 import { useFavorites } from "@/context/FavoritesContext";
 import PostItem from "../PostItem";
 import Tabs from "../Tabs";
 import Sorting from "../Sorting";
-import { Post, RawPost } from "@/types";
+import { Post } from "@/types";
 import { useTabs } from "@/context/TabsContext";
 import { useSorting } from "@/context/SortingContext";
 import { useEffect, useState } from "react";
-import { CATEGORIES, POSTS_LIMIT, CATEGORY_MAP } from "@/const";
+import { CATEGORY_MAP } from "@/const";
 import Link from "next/link";
 import styles from "./post-list.module.css";
 import { useCategory } from "@/context/CategoryContext";
 
-export default function PostList() {
+export default function PostList({ initialPosts }: { initialPosts: Post[] }) {
   const { category } = useCategory();
   const { activeTab } = useTabs();
   const { sortOrder } = useSorting();
   const { favorites } = useFavorites();
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [error, setError] = useState(null);
+  const [posts, setPosts] = useState<Post[]>(initialPosts);
 
   useEffect(() => {
-    const posts = localStorage.getItem("posts");
-    if (posts) {
-      setPosts(JSON.parse(posts));
+    const savedPosts = localStorage.getItem("posts");
+    if (savedPosts) {
+      setPosts(JSON.parse(savedPosts));
     } else {
-      fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${POSTS_LIMIT}`)
-        .then((res) => res.json())
-        .then((data: RawPost[]) => {
-          const categorizedPosts = data.slice(0, 10).map((post, index) => ({
-            ...post,
-            category: CATEGORIES[index % CATEGORIES.length],
-            createdAt: Date.now() - Math.floor(Math.random() * 1000000000),
-          }));
-
-          setPosts(categorizedPosts);
-          localStorage.setItem("posts", JSON.stringify(categorizedPosts));
-        })
-        .catch((err) => setError(err));
+      localStorage.setItem("posts", JSON.stringify(initialPosts));
     }
-  }, []);
-
-  if (error) return <h2>⛔ Błąd: {error}</h2>;
-  if (!posts.length) return <p className={styles.loading}>Ładowanie...</p>;
+  }, [initialPosts]);
 
   let filteredPosts: Post[] = [];
   if (category) {

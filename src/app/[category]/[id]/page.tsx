@@ -1,67 +1,55 @@
-"use client";
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import { RawPost, Post } from "@/types";
-import { HeaderBar } from "@/components/HeaderBar";
+import HeaderBar from "@/components/HeaderBar";
+import Post from "@/components/Post";
+import { RawPost, PostParams } from "@/types";
 import styles from "./post.module.css";
 
-export default function PostPage() {
-  const params = useParams<{
-    id: string;
-    category: string;
-  }>();
-  const { id } = params;
-  const [post, setPost] = useState<Post | null>(null);
-  const [error, setError] = useState(null);
+function truncateText(text: string, maxLength: number) {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + "...";
+  }
+  return text;
+}
 
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then((res) => res.json())
-      .then((data: RawPost) => {
-        if (!Object.keys(data).length) throw new Error("Nie ma takiego posta");
-        const storedPosts = localStorage.getItem("posts");
-        const posts: Post[] =
-          storedPosts === null ? [] : JSON.parse(storedPosts);
-        const foundPost = posts.find((p) => p.id === parseInt(id));
-        if (!foundPost)
-          throw new Error(
-            "Nie ma takiego posta we wcześniejszych postach, na ilosc postów nałożony jest limit i są one związane losowo z kategoriami i zapisane w localstorage"
-          );
-        setPost({
-          ...data,
-          createdAt: foundPost?.createdAt,
-          category: foundPost?.category,
-        });
-      })
-      .catch((err) => {
-        setError(err);
-      });
-  }, [id]);
+async function getPost(id: string) {
+  if (!/^\d+$/.test(id)) {
+    throw new Error("Nieprawidłowe id - musi być liczbą");
+  }
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+    cache: "force-cache",
+  });
+  if (!res.ok) {
+    throw new Error("Błąd podczas pobierania danych");
+  }
+  const post: RawPost = await res.json();
+  return post;
+}
 
-  if (error) throw error;
-  if (!post) return <p className={styles.loading}>Ładowanie...</p>;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<PostParams>;
+}) {
+  const allParams = await params;
+  const post = await getPost(allParams.id);
+
+  return {
+    title: `ACME - ${post.title}`,
+    description: truncateText(post.body, 100),
+  };
+}
+
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<PostParams>;
+}) {
+  const allParams = await params;
+  const post = await getPost(allParams.id);
 
   return (
     <main className={styles.wrapper}>
-      <HeaderBar {...params} />
-      <article className={styles.post}>
-        <div>
-          <h1 className={styles.title}>{post.title}</h1>
-          <p className={styles.body}>{post.body}</p>
-          <h3 className={styles.subtitle}>Lorem ipsum</h3>
-          <p className={styles.txt}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrs standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only
-            five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. Lorem Ipsum is simply dummy text of
-            the printing and typesetting industry. Lorem Ipsum has been the
-            industrys standard dummy text ever since the 1500s.
-          </p>
-          <img src="/sample.png" alt="sample image" />
-        </div>
-      </article>
+      <HeaderBar {...allParams} />
+      <Post data={post} />
     </main>
   );
 }

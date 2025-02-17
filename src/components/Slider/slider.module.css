@@ -1,0 +1,76 @@
+.slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.slider-wrapper :global(.swiper-pagination) {
+  position: relative;
+  top: 20px !important;
+}
+.slider-wrapper :global(.swiper-pagination) :global(.swiper-pagination-bullet) {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  background-color: #fff;
+}
+
+.slider-wrapper
+  :global(.swiper-pagination)
+  :global(.swiper-pagination-bullet.swiper-pagination-bullet-active) {
+  background-color: #000;
+}
+
+.slider-wrapper :global(.swiper) {
+  width: 100%;
+  padding: 0 6px;
+  opacity: 0;
+}
+
+.slider-wrapper :global(.swiper-slide) {
+  display: flex;
+  justify-content: center;
+}
+
+.slider-wrapper :global(.swiper-button-next),
+.slider-wrapper :global(.swiper-button-prev) {
+  color: #000;
+  display: none;
+}
+
+.custom-arr-prev,
+.custom-arr-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 26px;
+  padding: 10px;
+  z-index: 10;
+  color: #000;
+  font-family: swiper-icons;
+}
+
+.custom-arr-prev {
+  left: -35px;
+}
+.custom-arr-prev::after {
+  content: "prev";
+}
+.custom-arr-next::after {
+  content: "next";
+}
+.custom-arr-next {
+  right: -35px;
+}
+
+.custom-arr-visible {
+  visibility: visible;
+}
+
+.custom-arr-hidden {
+  visibility: hidden;
+}

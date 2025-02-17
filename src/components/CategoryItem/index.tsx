@@ -2,8 +2,10 @@ import Link from "next/link";
 import { CATEGORY_MAP } from "@/const";
 import { useCategory } from "@/context/CategoryContext";
 import styles from "./category-item.module.css";
+
 const CategoryItem = ({ category }: { category: string }) => {
   const { category: selectedCategory } = useCategory();
+
   return (
     <Link key={category} href={`/${category}`} scroll={false} passHref>
       <button

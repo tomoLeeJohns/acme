@@ -16,3 +16,8 @@ export interface OptionType {
   value: string;
   label: string;
 }
+
+export interface PostParams {
+  id: string;
+  category: string;
+}

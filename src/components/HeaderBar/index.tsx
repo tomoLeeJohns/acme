@@ -1,14 +1,15 @@
+"use client";
 import Link from "next/link";
 import styles from "./header-bar.module.css";
 import { Favourite } from "../Favourite";
 
-export const HeaderBar = ({
+export default function HeaderBar({
   id,
   category,
 }: {
   id: string;
   category: string;
-}) => {
+}) {
   const postId = parseInt(id);
 
   return (
@@ -21,4 +22,4 @@ export const HeaderBar = ({
       </div>
     </div>
   );
-};
+}
